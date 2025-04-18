@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO</title>
+
+  <link rel="icon" href="./assets/image/favicon.png" type="image/png">
+
+  <style>
+  /* Google Fontsのインポート - Mochiy Pop Oneを別のフォントに変更 */
+  @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=VT323&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
+
+  :root {
+    /* シンプルな可愛いゲーム風カラースキーム */
+    --primary-color: #FF6B6B;    /* 明るいコーラルピンク */
+    --secondary-color: #4ECDC4;  /* ミントグリーン */
+    --dark-color: #493657;       /* 深い紫 */
+    --accent-color: #FFE66D;     /* 明るい黄色 */
+    --light-color: #FFF5F5;      /* 淡いピンク背景 */
+    --text-color: #493657;       /* 紫のテキスト */
+    --box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* シンプルな影 */
+    --section-padding: 4rem 2rem;
+    
+    /* 日本語とゲーム風フォントの組み合わせ - Mochiy Pop Oneを変更 */
+    --game-font: 'VT323', 'M PLUS Rounded 1c', "Zen Maru Gothic", sans-serif;
+    --jp-font: 'M PLUS Rounded 1c', "Zen Maru Gothic", sans-serif;
+  }
+
+  /* アニメーションを削減、必要最小限に */
+  @keyframes pulseSkill {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+  }
+
+  /* シンプルな浮遊効果 - 控えめに */
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+
+  /* ポップアップ効果 */
+  @keyframes popup {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* リセット */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* シンプルな背景 - TransparentTextureを使用 */
+  body {
+    background-color: var(--light-color);
+    background-image: url('https://www.transparenttextures.com/patterns/vichy.png');
+    color: var(--text-color);
+    line-height: 1.6;
+    position: relative;
+  }
+
+  /* ヘッダーをシンプルなゲームタイトル風に */
+  header {
+    background-color: var(--primary-color);
+    background-image: url('https://www.transparenttextures.com/patterns/batthern.png');
+    color: white;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 6px solid white;
+    box-shadow: 0 6px 0 var(--secondary-color);
+  }
+
+  .header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ゲームタイトル風のヘッダータイトル */
+  h1 {
+    font-family: var(--jp-font);
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 var(--dark-color);
+  }
+
+  .subtitle {
+    font-family: var(--jp-font);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    padding: 0.3rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+  }
+
+  /* ナビゲーションをゲームメニュー風に - シンプル化 */
+  nav {
+    background-color: white;
+    box-shadow: 0 4px 0 var(--secondary-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--primary-color);
+    padding: 0.3rem 0;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0.8rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  nav li {
+    margin: 0;
+    position: relative;
+  }
+
+  nav a {
+    color: var(--dark-color);
+    font-family: var(--jp-font);
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    background-color: rgba(255, 107, 107, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid transparent;
+  }
+
+  nav a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 var(--secondary-color);
+  }
+
+  nav a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 var(--secondary-color);
+  }
+
+  /* ナビアイコン */
+  nav a i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+
+  nav a:hover i {
+    color: white;
+  }
+
+  /* セクションの基本スタイル */
+  section {
+    padding: var(--section-padding);
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* シンプルなセクションタイトル */
+  section h2 {
+    font-family: var(--jp-font);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+  }
+
+  section h2::before {
+    content: attr(data-icon);
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 2rem;
+    color: var(--secondary-color);
+  }
+
+  /* プロフィールコンテナ */
+  .profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  /* プロフィール画像をシンプルに装飾 */
+  .profile-image {
+    min-width: 250px;
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+  }
+
+  .profile-image img {
+    width: 100%;
+    border-radius: 50%;
+    border: 8px solid white;
+    box-shadow: 0 0 0 4px var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+    display: inline-block;
+  }
+
+  .profile-image img:hover {
+    transform: scale(1.03) rotate(2deg);
+    border-color: var(--accent-color);
+  }
+
+  /* 基本情報をゲームカード風に - ずれを修正 */
+  .profile-basic-info {
+    width: 100%;
+    max-width: 300px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 0 var(--primary-color);
+    margin-bottom: 1.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    border: 2px solid var(--primary-color);
+  }
+
+  .profile-basic-info p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--jp-font);
+    font-size: 0.8rem;
+    color: var(--dark-color);
+  }
+
+  .profile-basic-info p:last-child {
+    margin-bottom: 0;
+  }
+
+  .profile-basic-info i {
+    color: var(--primary-color);
+    font-size: 1.0rem;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .profile-basic-info strong {
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-right: 0.3rem;
+  }
+
+  /* クイックリンクをゲームボタン風に */
+  .profile-quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .quick-link {
+    font-family: var(--jp-font);
+    font-size: 0.85rem;
+    color: white;
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid white;
+    box-shadow: 0 4px 0 var(--dark-color);
+  }
+
+  .quick-link:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--dark-color);
+  }
+
+  .quick-link:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--dark-color);
+  }
+
+  .quick-link i {
+    font-size: 1.2rem;
+  }
+
+  /* プロフィール情報 */
+  .profile-info {
+    flex: 2;
+    min-width: 300px;
+  }
+
+  /* About Me セクション */
+  .about-me {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 0 var(--secondary-color);
+    margin-bottom: 2.5rem;
+    border: 2px solid var(--primary-color);
+    position: relative;
+  }
+
+  .about-me h3 {
+    font-family: var(--jp-font);
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .about-me h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+  }
+
+  .about-me h3 i {
+    color: var(--accent-color);
+  }
+
+  .about-me p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--dark-color);
+  }
+
+  .about-me p:not(:first-of-type)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+  }
+
+  .about-me p:nth-of-type(2n)::before {
+    background-color: var(--secondary-color);
+  }
+
+  .about-me p:nth-of-type(3n)::before {
+    background-color: var(--accent-color);
+  }
+
+  .about-me strong {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+
+  /* アコーディオングループ */
+  .info-group {
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 0 var(--secondary-color);
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+  }
+
+  .info-group:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 0 var(--secondary-color);
+  }
+
+  /* アコーディオン見出し */
+  .info-group h3 {
+    font-family: var(--jp-font);
+    color: white;
+    margin-bottom: 0;
+    padding: 1.2rem 1.5rem;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .info-group h3 i {
+    margin-right: 0.8rem;
+    font-size: 1.3rem;
+  }
+
+  .info-group h3::after {
+    content: '\f067';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: white;
+    width: 28px;
+    height: 28px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info-group h3.active::after {
+    content: '\f068';
+    background-color: white;
+    color: var(--primary-color);
+    transform: rotate(180deg);
+  }
+
+  .info-content {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background-color: white;
+  }
+
+  .info-group h3.active + .info-content {
+    padding: 1.5rem;
+    max-height: 1000px;
+  }
+
+  /* 学歴項目 */
+  .education-item {
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background-color: rgba(255, 107, 107, 0.05);
+    border-radius: 15px;
+    border: 2px dashed var(--primary-color);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .education-item:hover {
+    background-color: rgba(255, 107, 107, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .education-date {
+    font-family: var(--jp-font);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .education-date i {
+    color: var(--secondary-color);
+  }
+
+  /* 受賞項目 */
+  .award-item {
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    border: 2px dashed var(--accent-color);
+    background-color: rgba(255, 230, 109, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .award-item:hover {
+    background-color: rgba(255, 230, 109, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .award-title {
+    font-family: var(--jp-font);
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    position: relative;
+  }
+
+  .award-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .award-date i {
+    color: var(--secondary-color);
+  }
+
+  .award-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .award-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 107, 107, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+  }
+
+  .award-link a i {
+    font-size: 0.8rem;
+  }
+
+  .award-link a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateX(3px);
+  }
+
+  /* インターン項目 */
+  .intern-item {
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    border: 2px dashed var(--secondary-color);
+    background-color: rgba(78, 205, 196, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .intern-item:hover {
+    background-color: rgba(78, 205, 196, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .intern-title {
+    font-family: var(--jp-font);
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .intern-title i {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+  }
+
+  .intern-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* リンクボタン */
+  .link-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid white;
+    box-shadow: 0 4px 0 var(--dark-color);
+    font-family: var(--jp-font);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .link-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--dark-color);
+  }
+
+  .link-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--dark-color);
+  }
+
+  /* スキルセクション */
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .skill-category {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 0 var(--secondary-color);
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-category h3 {
+    font-family: var(--jp-font);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  .skill-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+  }
+
+  .skill-list {
+    list-style: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* スキル項目とスキルバー */
+  .skill-item {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  .skill-item:hover {
+    transform: translateX(3px);
+  }
+
+  .skill-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .skill-name {
+    font-family: var(--jp-font);
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-right: 1rem;
+    min-width: 110px;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .skill-name::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.3rem;
+  }
+
+  .skill-bar {
+    flex: 1;
+    height: 12px;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .skill-level {
+    height: 100%;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    animation: pulseSkill 3s ease-in-out infinite;
+  }
+
+  .skill-detail {
+    font-size: 0.85rem;
+    color: #666;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+    line-height: 1.5;
+    padding-left: 0.5rem;
+    border-left: 2px dashed var(--secondary-color);
+  }
+
+  .skill-item:hover .skill-detail {
+    border-left-color: var(--primary-color);
+  }
+
+  /* 経験カードセクション */
+  .experiences {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  /* 経験カードをゲームアイテム風に */
+  .experience-card {
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 0 var(--secondary-color);
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    flex: 1;
+    min-width: 100%;
+  }
+
+  .experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 0 var(--secondary-color);
+  }
+
+  .experience-card .card-header {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    position: relative;
+    padding: 1.2rem 3rem 1.2rem 1.5rem;
+    transition: all 0.3s ease;
+    font-family: var(--jp-font);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .experience-card .card-header::after {
+    content: '\f067';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .experience-card.active .card-header::after {
+    content: '\f068';
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .experience-card .card-body {
+    position: static;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: white;
+    padding: 0 1.5rem;
+    color: var(--dark-color);
+  }
+
+  .experience-card.active .card-body {
+    max-height: 500px;
+    padding: 1.8rem 1.5rem;
+  }
+
+  .card-title {
+    color: var(--light-color);
+    font-family: var(--jp-font);
+    font-size: 1.1rem;
+    font-weight: 700;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .card-title::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .card-text {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #666;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .tag {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    font-family: var(--jp-font);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  /* ポートフォリオグリッド */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+
+  /* 作品アイテムをゲームカード風に */
+  .portfolio-item {
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 0 var(--secondary-color);
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    position: relative;
+  }
+
+  .portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 0 var(--secondary-color);
+  }
+
+  /* ポートフォリオカード内のタグ表示用スタイル */
+  .portfolio-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .portfolio-item:hover .portfolio-image img {
+    transform: scale(1.08);
+  }
+
+  .portfolio-info {
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  /* ポートフォリオ情報内のタグ表示用スタイル */
+  .portfolio-info .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0 0.8rem 0;
+  }
+
+  /* タグスタイル - タイトル下に配置 */
+  .portfolio-info .tag {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    font-family: var(--jp-font);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  /* ホバー時の挙動 */
+  .portfolio-info .tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  /* アイコンスタイル */
+  .portfolio-info .tag i {
+    font-size: 0.8rem;
+  }
+
+    /* フィーチャードプロジェクト */
+    .featured-project {
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 0 var(--secondary-color);
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    position: relative;
+    margin: 0 auto 3rem auto;
+    max-width: 800px;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  /* フェードアウト時 */
+  .featured-project.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  /* フェードイン時 */
+  .featured-project.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .featured-project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 0 var(--secondary-color);
+  }
+
+  .featured-project-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .featured-project-title {
+    font-family: var(--jp-font);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  .featured-project-nav {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .featured-nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .featured-nav-btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+
+  .featured-nav-btn:active {
+    transform: translateY(1px);
+  }
+
+  .featured-project-image {
+    height: 300px;
+    overflow: hidden;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .featured-project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .featured-project:hover .featured-project-image img {
+    transform: scale(1.05);
+  }
+
+  .featured-project-content {
+    padding: 1.5rem;
+  }
+
+  .featured-project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .featured-tag {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    font-family: var(--jp-font);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .featured-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  .featured-project-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+  }
+
+  .featured-project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .featured-project-link {
+    font-family: var(--jp-font);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: var(--primary-color);
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 4px 0 var(--dark-color);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .featured-project-link:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--dark-color);
+    color: white;
+  }
+
+  .featured-project-link.secondary {
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  }
+
+  .featured-project-link.secondary:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+  }
+
+  /* レスポンシブ調整 */
+  @media (max-width: 768px) {
+    .portfolio-info .portfolio-tags {
+      margin: 0.4rem 0 0.6rem 0;
+    }
+    
+    .portfolio-info .tag {
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+
+  .portfolio-title {
+    font-family: var(--jp-font);
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    color: var(--primary-color);
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .portfolio-desc {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  .portfolio-link {
+    font-family: var(--jp-font);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.2rem;
+    background-color: var(--primary-color);
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 4px 0 var(--dark-color);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .portfolio-link:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--dark-color);
+    color: white;
+  }
+
+  .portfolio-link:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 var(--dark-color);
+  }
+
+  /* フッターをシンプルなゲームエンドクレジット風に */
+  footer {
+    background-color: var(--primary-color);
+    background-image: url('https://www.transparenttextures.com/patterns/batthern.png');
+    color: white;
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    border-top: 6px solid white;
+    position: relative;
+  }
+
+  .contact-info {
+    margin-bottom: 1.5rem;
+    font-family: var(--jp-font);
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    background-color: rgba(255,255,255,0.1);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+
+  .contact-info a {
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(255,255,255,0.5);
+    font-weight: 700;
+    padding: 0 0.3rem;
+  }
+
+  .contact-info a:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-bottom-style: solid;
+  }
+
+  footer p {
+    font-family: var(--jp-font);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* トップに戻るボタンをゲームコントローラー風に */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 0 var(--dark-color);
+    transition: all 0.3s ease;
+    border: 2px solid white;
+    z-index: 100;
+    font-size: 1.5rem;
+  }
+
+  .back-to-top:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--dark-color);
+  }
+
+  .back-to-top:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 var(--dark-color);
+  }
+
+  /* モーダルスタイル */
+  .image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(73, 54, 87, 0.9);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+
+  .image-modal.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .image-modal img {
+    max-width: 85vw;
+    max-height: 85vh;
+    border-radius: 20px;
+    border: 5px solid white;
+    box-shadow: 0 0 0 3px var(--primary-color);
+    object-fit: contain;
+    transform: scale(.9);
+    transition: transform .4s ease;
+  }
+
+  .image-modal.active img {
+    transform: scale(1);
+  }
+
+  /* ナビゲーション矢印 */
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    user-select: none;
+    cursor: pointer;
+    opacity: .7;
+    transition: all .3s ease;
+    background-color: var(--primary-color);
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 0 var(--dark-color);
+  }
+
+  .modal-nav:hover {
+    opacity: 1;
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 0 var(--dark-color);
+  }
+
+  .modal-nav:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 0 var(--dark-color);
+  }
+
+  .modal-prev {
+    left: 2rem;
+  }
+
+  .modal-next {
+    right: 2rem;
+  }
+
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    :root {
+      --section-padding: 3rem 1.5rem;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    .subtitle {
+      font-size: 0.9rem;
+    }
+    
+    nav ul {
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+    }
+    
+    nav a, .quick-link {
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+    }
+    
+    .profile-image {
+      max-width: 250px;
+    }
+    
+    section h2 {
+      font-size: 1.6rem;
+    }
+    
+    .skill-category, .experience-card, .portfolio-item {
+      min-width: 100%;
+    }
+    
+    .modal-nav {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+    }
+    
+    .modal-prev {
+      left: 1rem;
+    }
+    
+    .modal-next {
+      right: 1rem;
+    }
+    
+    .back-to-top {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  /* メディアクエリ - 小さい画面用 */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+    
+    .subtitle {
+      font-size: 0.8rem;
+    }
+    
+    nav a {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.75rem;
+    }
+    
+    section h2 {
+      font-size: 1.4rem;
+    }
+    
+    .profile-basic-info, .about-me, .info-group, .skill-category, .experience-card, .portfolio-item {
+      border-width: 2px;
+    }
+    
+    .card-title, .portfolio-title, .skill-name {
+      font-size: 0.95rem;
+    }
+    
+    .card-text, .portfolio-desc, .skill-detail, .intern-desc, .award-desc {
+      font-size: 0.85rem;
+    }
+    
+    .modal-nav {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
+  </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+    <h1>PORTFOLIO</h1>
+    <p class="subtitle">島田東子</p>
+    </div>
+</header>
+
+<nav>
+<ul>
+<li><a href="#profile"><i class="fas fa-user-circle"></i> プロフィール</a></li>
+<li><a href="#featured-work"><i class="fas fa-paint-brush"></i> 作品</a></li>
+<li><a href="#skills"><i class="fas fa-star"></i> スキル</a></li>
+<li><a href="#experiences"><i class="fas fa-rocket"></i> 経験</a></li>
+</ul>
+</nav>
+
+<section id="profile">
+<h2 data-icon="&#xf007;">プロフィール</h2>
+<div class="profile-container">
+<div class="profile-image">
+    <img src="./assets/image/profile.png" alt="島田東子のプロフィール画像">
+    <div class="profile-basic-info">
+        <p><i class="fas fa-user"></i> <strong>名前：</strong>島田東子（しまだ とうこ）</p>
+        <p><i class="fas fa-birthday-cake"></i> <strong>生年月日：</strong>2003年1月12日</p>
+    </div>
+    <div class="profile-quick-links">
+        <a href="https://github.com/touko1125" class="quick-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://x.com/toraki55" class="quick-link" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="https://www.youtube.com/@%E3%81%A8%E3%83%BC%E3%81%93-t8u" class="quick-link" target="_blank"><i class="fab fa-youtube"></i> Youtube</a>
+        <a href="https://www.facebook.com/tohko5979" class="quick-link" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+</div>
+<div class="profile-info">
+    <div class="about-me">
+        <h3><i class="fas fa-heart"></i> About Me</h3>
+        <p>自他ともにクリエイティブに向き合いつづけられる人間</p>
+        <p><strong>🧳 [ Jobs ]</strong> Unityエンジニア/プロジェクトマネージャー</p>
+        <p><strong>🎓 [ 最終学歴 ]</strong> 筑波大学情報学群情報メディア創生学類 2025年3月卒業予定<br>筑波大学人間総合科学学術院人間総合科学研究群情報学学位プログラム 進学予定 2027年3月卒業予定</p>
+        <p><strong>📘 [ 課外活動 ]</strong> 筑波大学学園祭実行委員会情報システム局 / BenchTime</p>
+    </div>
+    
+    <div class="info-group">
+        <h3><i class="fas fa-graduation-cap"></i> 学歴</h3>
+        <div class="info-content">
+            <div class="education-item">
+                <p class="education-date"><i class="far fa-calendar-alt"></i> 2018年4月 - 2021年3月</p>
+                <p>私立豊島岡女子学園高等学校</p>
+            </div>
+            <div class="education-item">
+                <p class="education-date"><i class="far fa-calendar-alt"></i> 2021年4月 - 2025年3月</p>
+                <p>筑波大学情報学群情報メディア創生学類</p>
+            </div>
+            <div class="education-item">
+                <p class="education-date"><i class="far fa-calendar-alt"></i> 2025年4月 - 2027年3月（予定）</p>
+                <p>筑波大学人間総合科学学術院人間総合科学研究群情報学学位プログラム</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info-group">
+        <h3><i class="fas fa-trophy"></i> 受賞・認定・資格</h3>
+        <div class="info-content">
+            <div class="award-item">
+                <p class="award-title">🎗️ Unityインターハイ2019 ゴールドアワード</p>
+                <p class="award-date"><i class="far fa-calendar-check"></i> 2019年12月17日</p>
+                <p class="award-link"><a href="https://unity3d.jp/education/interview-kaeru/" target="_blank"><i class="fas fa-external-link-alt"></i> 詳細</a></p>
+            </div>
+            <div class="award-item">
+                <p class="award-title">🎗️ Unityインターハイ2020 審査員特別賞</p>
+                <p class="award-date"><i class="far fa-calendar-check"></i> 2020年12月13日</p>
+                <p class="award-link"><a href="https://note.com/unityjapan/n/n2e6bbb47533e" target="_blank"><i class="fas fa-external-link-alt"></i> 詳細</a></p>
+            </div>
+            <div class="award-item">
+                <p class="award-title">🎗️ アプリ甲子園2020 優勝/技術賞</p>
+                <p class="award-date"><i class="far fa-calendar-check"></i> 2020年11月17日</p>
+                <p class="award-link"><a href="https://note.com/appko/n/ncf652785e7a0" target="_blank"><i class="fas fa-external-link-alt"></i> 詳細</a></p>
+            </div>
+            <div class="award-item">
+                <p class="award-title">🎗️ 基本情報技術者試験</p>
+                <p class="award-date"><i class="far fa-calendar-check"></i> 2021年7月</p>
+            </div>
+            <div class="award-item">
+                <p class="award-title">🎗️ Life is Tech! 黒ポロ</p>
+                <p class="award-date"><i class="far fa-calendar-check"></i> 2024年8月</p>
+                <p class="award-desc">Life is Tech! メンター内において高い技術力、コミュニティ貢献、リーダーシップ、強いコミットメントを備えたメンターに授与される名誉ある表彰。所属する数百名のメンターの中から一握り（数名）しか選ばれない。</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="info-group">
+        <h3><i class="fas fa-briefcase"></i> インターン歴</h3>
+        <div class="info-content">
+            <div class="intern-item">
+                <p class="intern-title"><i class="fas fa-building"></i> ライフイズテック株式会社</p>
+                <p class="intern-desc">中高生向けIT教育事業の一環で、技術メンターとしてUnityゲームプログラミングコース、AIクリエイティブコースを担当。クラーク記念国際高等学校にて、プログラミング専科の授業を担当。それぞれのコースのプロジェクトリーダーとして教材制作カリキュラムの企画・進行を担当し、多岐にわたる教材の開発と納品に貢献。中高生への指導スキルを持つ技術メンターを育成するための、大学生向け育成プログラムの講師を担当。</p>
+            </div>
+            <div class="intern-item">
+                <p class="intern-title"><i class="fas fa-building"></i> Cygames株式会社</p>
+                <p class="intern-desc">現場で活躍するトップクリエイターである社員の指導のもと、大学1年生から現在に至るまで、最高のコンテンツ制作に必要なハードスキルとソフトスキルの両面で指導を受けてまいりました。Unityを用いたゲーム開発から設計思想の理解、サーバサイド技術、低レイヤのグラフィックスAPIを用いたエンジンの作成に至るまで、幅広い知識とスキルをご指導いただいています。</p>
+            </div>
+            <div class="intern-item">
+                <p class="intern-title"><i class="fas fa-building"></i> TeamLab株式会社</p>
+                <p class="intern-desc">2ヶ月間の短期インターンシップを通じて、インタラクティブエンジニアとしての実践的な開発経験を積みました。チームラボのコンテンツとして展示されている、リアルタイムでインタラクティブに動作するアート作品の制作に携わり、その制作プロセスを通じてスキルを磨きました。</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<section id="featured-work">
+  <h2 data-icon="&#xf0b1;">作品紹介</h2>
+  
+  <div class="featured-project" id="featuredProject">
+      <div class="featured-project-header">
+          <h3 class="featured-project-title">作品を読み込み中...</h3>
+          <div class="featured-project-nav">
+              <div class="featured-nav-btn" id="prevProject"><i class="fas fa-chevron-left"></i></div>
+              <div class="featured-nav-btn" id="nextProject"><i class="fas fa-chevron-right"></i></div>
+          </div>
+      </div>
+      <div class="featured-project-image">
+          <img src="/api/placeholder/800/400" alt="作品イメージ" id="featuredImage">
+      </div>
+      <div class="featured-project-content">
+          <div class="featured-project-tags" id="featuredTags">
+              <!-- タグがここに挿入されます -->
+          </div>
+          <p class="featured-project-desc" id="featuredDesc">作品の説明を読み込み中...</p>
+          <div class="featured-project-links">
+              <a href="#" class="featured-project-link" id="detailLink"><i class="fas fa-eye"></i> 詳細を見る</a>
+              <a href="works.html" class="featured-project-link secondary"><i class="fas fa-th-large"></i> 作品一覧へ</a>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 data-icon="&#xf19d;">スキル</h2>
+  <div class="skills-container"><!-- ここに JavaScript で動的に追加 --></div>
+</section>
+
+<section id="experiences">
+    <h2 data-icon="&#xf0d0;">経験・エピソード</h2>
+    <div class="experiences" id="experienceList"><!-- JSで生成 --></div>
+</section>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="./assets/script/projectsData.js"></script>
+<script src="./assets/script/experiencesData.js"></script>
+<script src="./assets/script/skillData.js"></script>
+<script src="./assets/script/main.js" defer></script>
+
+<footer>
+    <div class="contact-info">
+        <p>お問い合わせ: <a href="mailto:tohko.tech1125@email.com">tohko.tech1125@email.com</a></p>
+    </div>
+    <p>&copy; 2025 島田東子 All Rights Reserved.</p>
+</footer>
+<a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+</body>
+</html>
