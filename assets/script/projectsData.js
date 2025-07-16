@@ -3,6 +3,64 @@
 // すべてのプロジェクトを配列で管理
 const projectsData = [
   {
+    id: "matchMatch",
+    title: "Match Match",
+    date: "2025年7月",
+    category: "ゲーム",
+    tags: [
+      { icon: "fas fa-gamepad", text: "Unity" }
+    ],
+    banner: "./assets/image/matchmatch/title.png",
+    overview: `結婚相談所の所長となり、お客様からベストマッチの男女を見つけ出しペアを成立させるゲーム`,
+    usageTech: ["C#", "Unity", "Adobe Illustrator"],
+    technology: `UnityでC#によりゲームロジックを実装し、イラストはChatGPTで生成`,
+    features: `マッチングゲームのようなシンプルな操作で遊べる。キャラクターの個性的な性質`,
+    challenges: `短期間での開発`,
+    learned: ``,
+    gallery: [
+      { src: "./assets/image/matchmatch/title.png" },
+      { src: "./assets/image/matchmatch/image1.png" },
+      { src: "./assets/image/matchmatch/image2.png" },
+      { src: "./assets/image/matchmatch/image3.png" },
+      { src: "./assets/image/matchmatch/image4.png" },
+    ],
+    links: [
+      { icon: "fas fa-gamepad", label: "プレイする", url: "https://unityroom.com/games/match_match" }
+    ],
+    relatedWorks: []
+  },
+
+  {
+    id: "aikagami",
+    title: "相鏡",
+    date: "2025年4月",
+    category: "ゲーム",
+    tags: [
+      { icon: "fas fa-gamepad", text: "Unity" },
+      { icon: "fas fa-puzzle-piece", text: "パズル" },
+      { icon: "fas fa-ghost", text: "ホラー" }
+    ],
+    banner: "./assets/image/aikagami/title.png",
+    overview: `好奇心から“合わせ鏡”をのぞき込んだ少女「あい」は、突如現れた自分そっくりの“影”に引き込まれてしまう。プレイヤーは「あい」として、ステージ上に鏡を自由に配置し、左右・上下が反転する幻想的な世界を操作。越えられない谷は橋に、天井は床に。鏡の力で地形を変えながら、自分自身を模倣して迫る“もうひとりの私”をかわし、出口を目指そう。`,
+    usageTech: ["C#", "Unity", "Adobe Illustrator"],
+    technology: `UnityでC#によりゲームロジックを実装し、イラストはChatGPTで生成`,
+    features: ``,
+    challenges: `鏡の上下/左右反転ロジックの実装`,
+    learned: ``,
+    gallery: [
+      { src: "./assets/image/aikagami/title.png" },
+      { src: "./assets/image/aikagami/image1.png" },
+      { src: "./assets/image/aikagami/image2.png" },
+      { src: "./assets/image/aikagami/image3.png" },
+      { src: "./assets/image/aikagami/image4.png" },
+    ],
+    links: [
+      { icon: "fas fa-gamepad", label: "プレイする", url: "https://unityroom.com/games/aikagami" }
+    ],
+    relatedWorks: []
+  },
+
+  {
     id: "hairColorRing",
     title: "Hair Color Ring",
     date: "2025年3月",
