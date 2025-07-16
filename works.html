@@ -150,6 +150,19 @@
     position: relative;
   }
 
+  /* 大きな画面でのセクション幅拡張 */
+  @media (min-width: 1400px) {
+    section {
+      max-width: 1400px;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    section {
+      max-width: 1600px;
+    }
+  }
+
   /* シンプルなセクションタイトル */
   section h2 {
     font-family: var(--jp-font);
@@ -266,6 +279,28 @@
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2.5rem;
     padding: 0 1rem;
+  }
+
+  /* 大きな画面での柔軟なレイアウト */
+  @media (min-width: 1200px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
   }
 
   /* 作品アイテムをゲームカード風に */
