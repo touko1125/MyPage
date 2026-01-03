@@ -3,6 +3,33 @@
 // すべてのプロジェクトを配列で管理
 const projectsData = [
   {
+    id: "ameboid",
+    title: "Ameboid",
+    date: "2025年8月",
+    category: "ゲーム",
+    tags: [
+      { icon: "fas fa-gamepad", text: "Unity" }
+    ],
+    banner: "./assets/image/ameboid/image1.png",
+    overview: `アメーバたちの一対一オンライン対戦ゲーム。シャーレの中で、アメーバは点在する細胞を捕食しながら、自分自身の面積を広げていく。自分より面積の小さいアメーバは捕食できるため、面積を広げながら相手のアメーバの捕食を目指す。アメーバは分裂をすることで、半分の大きさになって、一方を操作し、一方をオート操縦にすることができる。ゲーム終了時までに相手よりも面積を大きくするか、相手のアメーバを捕食しきることができれば勝利となる。`,
+    usageTech: ["C#", "Unity", "Adobe Illustrator"],
+    technology: `Unity（C#）を用いて、アメーバの分裂・吸収・面積変化といったゲームロジックを実装。アメーバの有機的な動きを表現するため、Metaball 表現を用いた描画処理を試作し、パフォーマンス課題に応じてダブルステンシルによる軽量化手法を導入した。UI や一部ビジュアル制作には Adobe Illustrator および生成AIを補助的に使用。`,
+    features: `面積の大小関係によって捕食・被捕食が決まるシンプルなルールと、分裂による操作対象の増減を組み合わせた対戦デザインが特徴。プレイヤーの判断によって攻撃・防御・拡張の戦略が変化し、短時間でも駆け引きが生まれるゲーム体験を目指した。`,
+    challenges: `短期間での開発の中で、有機的なビジュアル表現と実機でのパフォーマンスを両立させる点に苦労した。特に Metaball 表現はエディタ上では問題なく動作する一方、モバイル実機では大きな負荷が発生し、描画方式の見直しが必要となった。`,
+    learned: ``,
+    gallery: [
+      { type: "youtube", id: "5hy-8sdChc0" },
+      { src: "./assets/image/ameboid/image1.png" },
+      { src: "./assets/image/ameboid/image2.png" },
+    ],
+    links: [
+      { icon: "fab fa-youtube", label: "デモを見る", url: "https://youtu.be/5hy-8sdChc0" }
+    ],
+    relatedWorks: []
+  },
+
+
+  {
     id: "matchMatch",
     title: "Match Match",
     date: "2025年7月",
